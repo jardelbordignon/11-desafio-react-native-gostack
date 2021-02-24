@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Image } from 'react-native';
+// import { useFocusEffect } from '@react-navigation/native';
 
 import api from '../../services/api';
 import formatValue from '../../utils/formatValue';
@@ -33,10 +34,41 @@ const Orders: React.FC = () => {
   useEffect(() => {
     async function loadOrders(): Promise<void> {
       // Load orders from API
+      const response = await api.get('/orders');
+
+      const formattedFoods = response.data.map((food: Food) => ({
+        ...food,
+        formattedPrice: formatValue(food.price),
+      }));
+
+      setOrders(formattedFoods);
     }
 
     loadOrders();
   }, []);
+
+  // useFocusEffect(
+  //   React.useCallback(() => {
+  //     const loadOrders = async () => {
+  //       try {
+  //         const response = await api.get('/orders');
+
+  //         const formattedFoods = response.data.map((food: Food) => ({
+  //           ...food,
+  //           formattedPrice: formatValue(food.price),
+  //         }));
+
+  //         // setOrders(formattedFoods);
+
+  //         return setOrders(formattedFoods);
+  //       } catch (e) {
+  //         // Handle error
+  //       }
+  //     };
+
+  //     loadOrders();
+  //   }, []),
+  // );
 
   return (
     <Container>

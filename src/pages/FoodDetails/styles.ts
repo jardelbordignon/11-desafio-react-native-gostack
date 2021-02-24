@@ -5,10 +5,30 @@ export const Container = styled.View`
   background: #fff;
 `;
 
+export const OrderConfirmation = styled.View`
+  position: absolute;
+  top: 0;
+  bottom: 3px;
+  left: 5%;
+  right: 5%;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  background: #000;
+  opacity: 0.9;
+  border-radius: 10px;
+`;
+
+export const OrderConfirmationText = styled.Text`
+  color: #fff;
+  font-family: 'Poppins-Regular';
+  font-size: 24px;
+  margin-top: 24px;
+`;
+
 export const Header = styled.View`
   padding: 40px 24px 20px;
   background: #c72828;
-  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
